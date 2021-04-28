@@ -23,9 +23,11 @@ export class StatVisualizer extends PIXI.Container {
     }
 
     public set value(v: number) {
+        v = Math.max(v, 0);
         this._Value = v;
-        while (this.bars.length > v) {
-            this.bars.pop().destroy();
+        while (this.bars.length > (v + 1)) {
+            let vis = this.bars.pop();
+            vis && vis.destroy();
         }
         for (let i = 0; i < v + 1; i++) {
             if (!this.bars[i]) {

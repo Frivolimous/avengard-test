@@ -14,7 +14,7 @@ import { TextureData } from './data/TextureData';
 import { FontLoader } from './services/FontLoader';
 
 export let interactionMode: 'desktop'|'mobile' = 'desktop';
-export let DEBUG_MODE = false;
+export let DEBUG_MODE = true;
 
 export let Facade = new class FacadeInner {
   private static exists = false;
