@@ -8,14 +8,14 @@ export class StatVisualizer extends PIXI.Container {
     private bars: PIXI.Graphics[] = [];
     private gradient: ColorGradient = new ColorGradient(0xffcccc, 0xccffcc);
 
-    constructor(label: string, value: number = 0) {
+    constructor(label: string, private offset: number = 1) {
         super();
 
         this.label.text = label;
         this.label.position.set(-this.label.width, 0);
 
         this.addChild(this.label);
-        this.value = value;
+        this.value = 0;
     }
 
     public get value(): number {
@@ -25,11 +25,11 @@ export class StatVisualizer extends PIXI.Container {
     public set value(v: number) {
         v = Math.max(v, 0);
         this._Value = v;
-        while (this.bars.length > (v + 1)) {
+        while (this.bars.length > v) {
             let vis = this.bars.pop();
             vis && vis.destroy();
         }
-        for (let i = 0; i < v + 1; i++) {
+        for (let i = 0; i < v + this.offset; i++) {
             if (!this.bars[i]) {
                 this.bars[i] = this.makeBar(i);
             }

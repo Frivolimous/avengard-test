@@ -7,7 +7,9 @@ import { MenuUI } from './MenuUI';
 import { Facade } from '../index';
 import { BlankUI } from './BlankUI';
 import { TestUI } from './TestUI';
-import { MenuUI2 } from './MenuUI2';
+import { SquareStats } from './SquareStats';
+import { TriangleEquipment } from './TriangleEquipment';
+import { SquareEquipment } from './SquareEquipment';
 
 export class Navbar extends PIXI.Container {
   private background = new PIXI.Graphics();
@@ -18,7 +20,9 @@ export class Navbar extends PIXI.Container {
     GameEvents.WINDOW_RESIZE.addListener(this.onResize);
     this.addChild(this.background);
     this.addContent('Triangle Stats', MenuUI);
-    this.addContent('Square Stats', MenuUI2);
+    this.addContent('Square Stats', SquareStats);
+    this.addContent('Triangle Equipment', TriangleEquipment);
+    this.addContent('Square Equipment', SquareEquipment);
   }
 
   private addContent(title: string, PageConstructor: typeof BaseUI, nowhere: boolean = null) {

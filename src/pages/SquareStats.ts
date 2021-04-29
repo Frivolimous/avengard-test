@@ -17,7 +17,7 @@ import { StatSquare } from '../components/StatSquare';
 
 type Stat = 'Ability Power' | 'Attack Power' | 'Attack Speed' | 'Attack Range' | 'Health' | 'Protection' | 'Stamina' | 'Movement Speed' | 'Building';
 
-export class MenuUI2 extends BaseUI {
+export class SquareStats extends BaseUI {
   private title: PIXI.Text;
   private statSquare = new StatSquare();
   private gradient = new ColorGradient(0xffcccc, 0xccccff);
@@ -98,6 +98,52 @@ export class MenuUI2 extends BaseUI {
     let M = Math.round(this.preStats[2] * 12);
     let U = 12 - P - D - M;
 
+    // let PD = 0;
+    // let MD = 0;
+    // let MU = 0;
+    // let PU = 0;
+
+    // if (P > 1 && D > 1) {
+    //   if (P > 2) {
+    //     P--;
+    //     PD++;
+    //   }
+    //   if (D > 2) {
+    //     D--;
+    //     PD++;
+    //   }
+    // }
+    // if (M > 1 && D > 1) {
+    //   if (M > 2) {
+    //     M--;
+    //     MD++;
+    //   }
+    //   if (D > 2) {
+    //     D--;
+    //     MD++;
+    //   }
+    // }
+    // if (P > 1 && U > 1) {
+    //   if (P > 2) {
+    //     P--;
+    //     PU++;
+    //   }
+    //   if (U > 2) {
+    //     U--;
+    //     PU++;
+    //   }
+    // }
+    // if (M > 1 && U > 1) {
+    //   if (M > 2) {
+    //     M--;
+    //     MU++;
+    //   }
+    //   if (U > 2) {
+    //     U--;
+    //     MU++;
+    //   }
+    // }
+
     this.stats['Ability Power'].value = Math.round( M * 2 / 3);
     this.stats['Attack Power'].value = Math.round(P * 2 / 3);
     this.stats['Attack Speed'].value = P - this.stats['Attack Power'].value;
@@ -110,11 +156,11 @@ export class MenuUI2 extends BaseUI {
     this.stats['Movement Speed'].value = Math.round(U * 1 / 3);
     this.stats['Building'].value = U - this.stats['Movement Speed'].value;
 
-    // this.statDisplay.text = '';
-    // for (let key of Object.keys(this.stats)) {
-    //   this.statDisplay.text += `${key}: ${this.stats[key as Stat]}\n`;
-    // }
-    // this.statDisplay.text = `Offense: ${this.toStat(stats[0])}\nDefense: ${this.toStat(stats[1])}\nUtility: ${this.toStat(stats[2])}`;
+    // this.stats.Health.value += PD;
+    // this.stats.Protection.value += MD;
+    // this.stats.Stamina.value += MU;
+    // this.stats['Attack Speed'].value += Math.ceil(PU / 2);
+    // this.stats['Movement Speed'].value += Math.floor(PU / 2);
   }
 
   public toStat(n: number) {
