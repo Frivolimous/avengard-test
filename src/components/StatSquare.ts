@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js';
 
 export class StatSquare extends PIXI.Container {
-    public stats: number[] = [0.25, 0.25, 0.25, 0.25];
+    public stats: number[] = [0.5, 0.5, 0.5, 0.5];
     public points: PIXI.Point[] = [];
     public onUpdate: (stats: number[]) => void;
 
